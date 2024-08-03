@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  background: #360369;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0;
+  font-family: "Montserrat", serif;
+  width: auto;
+  color: #fff;
+}
+
+.section1{
+  margin: 30px;
+}
+.section1 h2 {
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 65.83px;
+  text-align: left;
+
+}
+
+.section1 p {
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 43.88px;
+  text-align: left;
+}
+
+.position {
+  display: flex;
+  gap: 50px;
+}
+
+.lat {
+  width: 380px;
+  height: 87px;
+  border-radius: 10px;
+  background: #270846;
+}
+
+.long {
+  width: 430px;
+  height: 87px;
+  border-radius: 10px;
+  background: #270846;
+
+}
+
+.lat{
+font-size: 36px;
+font-weight: 700;
+line-height: 43.88px;
+text-align: center;
+}
+
+.long {
+font-size: 36px;
+font-weight: 700;
+line-height: 43.88px;
+text-align: center;
+}
+
+iframe{
+margin-top: 40px;
+}
+
+.section2 {
+  background-color: #fff;
+  color: #fff; 
+  padding: 30px;
+}
+
+.section2 h3{
+font-size: 54px;
+font-weight: 700;
+line-height: 65.83px;
+text-align: left;
+color: #360369;
+}
+
+.ditel{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
