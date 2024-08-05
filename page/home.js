@@ -1,23 +1,97 @@
-
-
 const showLat = document.querySelector("#Lat");
 const showLong = document.querySelector("#Long");
+const Api_key = "8285fc8ca80d301e32029d1b1f619b07";
+const api_url = "https://api.openweathermap.org/data/2.5/weather?";
 
-function getLocation(position)  {
-    const {latitude, longitude} = position.coords;
-    showLat.textContent = `Lat:${latitude}`;
-    showLong.textContent = `Lat:${longitude}`;
-    console.log(position)
+
+function getLocation(position) {
+  const { latitude, longitude } = position.coords;
+  showLat.textContent = `Lat:${latitude}`;
+  showLong.textContent = `Lat:${longitude}`;
 }
+
+const name = document.querySelector('#name');
+const Wind_speed = document.getElementById('windSpeed');
+const humidity = document.getElementById('humid');
+const time_zome = document.getElementById('gmt');
+const pressure = document.getElementById('pressure');
+const wind_direc = document.getElementById('wind_D');
+const uv = document.getElementById('uv');
+const feel = document.getElementById('feel');
+
+navigator.geolocation.getCurrentPosition(mylocation, noLocation);
+
+async function mylocation(position) {
+  const { latitude, longitude } = position.coords;
+  console.log(latitude +","+ longitude)
+  const response = await fetch(api_url + `lat=${latitude}&lon=${longitude}&appid=${Api_key}`)
+  let data = await response.json();
+  console.log(data);
+  name.textContent = `Location : ${data.name}`;
+  windSpeed.textContent = `Wind Speed: ${data.wind.speed}kmph`;
+  humid.textContent = `Humidity : ${data.main.humidity}`;
+  gmt.textContent = `Time zome : ${data.timezone}`;
+  pressure.textContent = `Pressure : ${data.main.pressure}`;
+  wind_D.textContent = `wind Direction : ${data.wind.deg}`;
+  uv.textContent = `UV Index : ${data.clouds.cod}`;
+  feel.textContent = `Feels like : ${data.main.feels_like}`; 
+
+
+
+}
+mylocation();
+function noLocation() {}
 
 function notGetLocation() {
-    console.log("ther some it")
+  console.log("defolt");
 }
 
-window.addEventListener('load', async () => {
-    
-    navigator.geolocation.getCurrentPosition(getLocation , notGetLocation)
-})
+window.addEventListener("load", async () => {
+  navigator.geolocation.getCurrentPosition(getLocation, notGetLocation);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*function showPosition(position) {
   const latitude = position.coords.latitude;
