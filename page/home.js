@@ -4,10 +4,26 @@ const Api_key = "8285fc8ca80d301e32029d1b1f619b07";
 const api_url = "https://api.openweathermap.org/data/2.5/weather?";
 
 
+
 function getLocation(position) {
   const { latitude, longitude } = position.coords;
   showLat.textContent = `Lat:${latitude}`;
   showLong.textContent = `Lat:${longitude}`;
+    console.log(latitude +","+ longitude)
+/////////////////////////////////////////////////
+const location = { lat: latitude, lng: longitude };
+
+  // Create a map centered at the user's location
+  const map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: location
+  });
+
+  // Add a marker at the user's location
+  const marker = new google.maps.Marker({
+      position: location,
+      map: map
+  });
 }
 
 const name = document.querySelector('#name');
@@ -23,10 +39,10 @@ navigator.geolocation.getCurrentPosition(mylocation, noLocation);
 
 async function mylocation(position) {
   const { latitude, longitude } = position.coords;
-  console.log(latitude +","+ longitude)
+  //console.log(latitude +","+ longitude)
   const response = await fetch(api_url + `lat=${latitude}&lon=${longitude}&appid=${Api_key}`)
   let data = await response.json();
-  console.log(data);
+  //console.log(data);
   name.textContent = `Location : ${data.name}`;
   windSpeed.textContent = `Wind Speed: ${data.wind.speed}kmph`;
   humid.textContent = `Humidity : ${data.main.humidity}`;
@@ -49,16 +65,6 @@ function notGetLocation() {
 window.addEventListener("load", async () => {
   navigator.geolocation.getCurrentPosition(getLocation, notGetLocation);
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
